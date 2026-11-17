@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>О себе — Ходжаев С. Д.</title>
-
+    <link rel="manifest" href="./manifest.json">
     
     <link rel="stylesheet" href="style.css">
     
@@ -171,5 +171,16 @@
     <button class="to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Наверх">↑</button>
     <script src="script.js"></script>
     <script src="dom.js"></script>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('SW работает!', reg))
+                .catch(err => console.log('Ошибка SW:', err));
+        });
+    }
+    </script>
+
 </body>
 </html>
